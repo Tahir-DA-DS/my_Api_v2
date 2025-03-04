@@ -31,8 +31,6 @@ router.get("/:id", cacheMiddleware, async (req, res) => {
     const animal = await Animal.findByPk(req.params.id);
     if (!animal) return res.status(404).json({ error: "Not found" });
 
-    redisClient.setEx(req.originalUrl, 3600, JSON.stringify(animal));
-
     res.json(animal);
   } catch (err) {
     res.status(500).json({ error: err.message });
