@@ -1,5 +1,4 @@
 require('dotenv').config({ path: __dirname + '/../.env' });
-
 module.exports = {
   development: {
     username: process.env.DB_USER || "uqjcy2xvxurbmauw",
@@ -18,11 +17,6 @@ module.exports = {
   },
   production: {
     use_env_variable: "DB_URL",
-    dialect: "mysql",
-    dialectOptions: {
-      ssl: {
-        rejectUnauthorized: true, 
-      },
-    },
+    dialect: "mysql"
   }
 };
