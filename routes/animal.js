@@ -3,6 +3,7 @@ const { Animal } = require("../models");
 const { authMiddleware } = require("../middleware/auth");
 require("dotenv").config({ path: __dirname + "/../.env" });
 const router = express.Router();
+const redisClient = require("../config/redisclient");
 const cacheMiddleware = require("../middleware/cacheMiddleare");
 
 
@@ -31,9 +32,7 @@ router.get("/:id", cacheMiddleware, async (req, res) => {
     const animal = await Animal.findByPk(req.params.id);
     if (!animal) return res.status(404).json({ error: "Not found" });
 
-    console.log("Cache Middleware URL:", req.originalUrl);
-
-    await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(animal));
+     redisClient.setEx(req.originalUrl, 3600, JSON.stringify(animal));
 
     res.json(animal);
   } catch (err) {
