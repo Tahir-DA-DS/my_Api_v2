@@ -7,6 +7,6 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: "mysql",
-    use_env_variable:process.env.DB_URL
+    use_env_variable: "DB_URL"
   }
 };
