@@ -6,7 +6,6 @@ const CACHE_TTL = process.env.CACHE_TTL || 3600;
 const cacheMiddleware = async (req, res, next) => {
   try {
     const cachedData = await redisClient.get(req.originalUrl);
-
     if (cachedData) {
       console.log("Cache Hit:", req.originalUrl);
       try {

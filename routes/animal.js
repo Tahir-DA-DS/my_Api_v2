@@ -31,6 +31,8 @@ router.get("/:id", cacheMiddleware, async (req, res) => {
     const animal = await Animal.findByPk(req.params.id);
     if (!animal) return res.status(404).json({ error: "Not found" });
 
+    console.log("Cache Middleware URL:", req.originalUrl);
+
     await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(animal));
 
     res.json(animal);
