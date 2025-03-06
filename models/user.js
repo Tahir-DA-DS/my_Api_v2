@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const user = sequelize.define("User", {
+    const User = sequelize.define("User", {
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -36,6 +36,6 @@ module.exports = (sequelize, DataTypes) => {
       },
     });
   
-    return user;
+    return User;
   };
   
