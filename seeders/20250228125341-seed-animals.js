@@ -4,7 +4,7 @@ const path = require("path");
 module.exports = {
   up: async (queryInterface) => {
     const jsonData = JSON.parse(
-      fs.readFileSync(path.join(__dirname, "../data_corrected.json"), "utf8")
+      fs.readFileSync(path.join(__dirname, "../output.json"), "utf8")
     );
 
     const formattedData = jsonData
